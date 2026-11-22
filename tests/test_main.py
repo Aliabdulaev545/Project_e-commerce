@@ -104,26 +104,27 @@ def test_category_count_multiple_with_products(product):
 
     # --- Тест загрузки из JSON (доп. задание) ---
 
-    def test_load_data_from_json(tmp_path):
-        data = [
-            {
-                "name": "Категория",
-                "description": "Описание",
-                "products": [
-                    {
-                        "name": "Товар",
-                        "description": "Описание",
-                        "price": 100.0,
-                        "quantity": 5,
-                    }
-                ],
-            }
-        ]
-        file = tmp_path / "products.json"
-        file.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 
-        categories = load_data_from_json(str(file))
-        assert len(categories) == 1
-        assert categories[0].name == "Категория"
-        assert len(categories[0].products) == 1
-        assert categories[0].products[0].price == 100.0
+def test_load_data_from_json(tmp_path):
+    data = [
+        {
+            "name": "Категория",
+            "description": "Описание",
+            "products": [
+                {
+                    "name": "Товар",
+                    "description": "Описание",
+                    "price": 100.0,
+                    "quantity": 5,
+                }
+            ],
+        }
+    ]
+    file = tmp_path / "products.json"
+    file.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+
+    categories = load_data_from_json(str(file))
+    assert len(categories) == 1
+    assert categories[0].name == "Категория"
+    assert len(categories[0].products) == 1
+    assert categories[0].products[0].price == 100.0

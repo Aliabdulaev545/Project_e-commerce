@@ -30,3 +30,12 @@ line-length = 119
 [tool.isort]
 profile = "black"
 line_length = 119
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "if __name__ == .__main__.:",
+    "pragma: no cover",
+]
